@@ -14,6 +14,7 @@ html {
   --accent-color: #2196f3;
   --complementary-color: #ffffff;
   --complementary-text: #757575;
+  --animation-time: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
   color: var(--primary-text-color);
@@ -59,6 +60,8 @@ a {
   font-size: 14px;
   line-height: 1.14;
   align-items: center;
+
+  transition: color 250ms var(--animation-time);
 }
 .work-mail-li:not(:first-child) {
   margin-left: 50px;
@@ -83,7 +86,7 @@ nav {
 
 .sait-nav .link-nav {
   color: var(--title-text-color);
-  
+  transition: color 250ms var(--animation-time);
 }
 .sait-nav .link-nav:hover,
 .sait-nav .link-nav:focus {
@@ -100,7 +103,6 @@ nav {
 }
 .sait-nav-li:not(:first-child) {
   margin-left: 50px;
-  
 }
 .sait-nav .link-nav.current {
   color: var(--accent-color);
@@ -341,6 +343,8 @@ img {
   display: flex;
   align-items: center; 
   justify-content: center;
+
+  transition: background-color 250ms var(--animation-time);
 }
 .network-link:hover,
 .network-link:focus {
@@ -352,6 +356,7 @@ img {
 }
 .link-social-network {
   fill: #AFB1B8;
+  transition: fill 250ms var(--animation-time);
 }
 .section-clients {
   font-weight: bold;
@@ -372,13 +377,14 @@ img {
   border: 1px solid #AFB1B8;
   border-radius: 4px;
   cursor: pointer;
+ 
+  transition: border-color 250ms var(--animation-time);
 }
 .section-clients-list {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .section-clients-logo:hover,
 .section-clients-logo:focus {
   border-color: var(--accent-color);
@@ -395,6 +401,8 @@ img {
   width: 106px;
   height: 60px;
   fill: #AFB1B8;
+  
+  transition: fill 250ms var(--animation-time);
 }
 
 /* Footer */
@@ -426,12 +434,14 @@ img {
 }
 .contact {
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--animation-time);
 }
 .contact:hover {
   color: var(--accent-color);
 }
 .contacts {
   color: var(--complementary-color);
+  transition: color 250ms var(--animation-time);
 }
 .contacts:hover {
   color: var(--accent-color);
@@ -443,7 +453,6 @@ img {
 .footer-link {
   margin-left: 70px;
 }
-
 .footer-title {
   color: var(--complementary-color);
   font-weight: bold;
@@ -456,7 +465,6 @@ img {
 }
 .footer-networks {
   display: flex;
-  
 }
 .footer-network-link {
   width: 44px;
@@ -466,6 +474,8 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: background-color 250ms var(--animation-time) ;
 }
 .footer-network-link:hover,
 .footer-network-link:focus {
@@ -511,6 +521,10 @@ ul {
   padding: 6px 22px;
   min-width: 73px;
   min-height: 38px;
+
+  transition: background-color 250ms var(--animation-time),
+  color 250ms var(--animation-time), 
+  box-shadow 250ms var(--animation-time); 
 }
 .oll {
   color: var(--complementary-color);
@@ -533,14 +547,18 @@ ul {
   0px 4px 4px rgba(0, 0, 0, 0.06),
   1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.card-link {
+  transition: box-shadow 250ms var(--animation-time);
+}
 .thumb {
   position: relative;
-  display: flex;
+  display: flex; 
   justify-content: center;
   align-items: center;
 }
-.thumb:hover .card-dropdown-text{
+.thumb:hover .card-dropdown-text {
   opacity: 1;
+  transform: scaleY(1);
 }
 .card-dropdown-text {
   font-weight: 400;
@@ -554,6 +572,11 @@ ul {
   position: absolute;
   padding: 63px 24px; 
   height: 100%;
+  
+  transition: transform 250ms var(--animation-time),
+  opacity 250ms var(--animation-time);
+  transform: scaleY(0);
+  transform-origin: bottom;
 }
 .images-portfolio {
   display: flex;
@@ -590,6 +613,9 @@ ul {
   border-left: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
 }
+
+/* Модальное окно */
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -597,10 +623,15 @@ ul {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms var(--animation-time);
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
 }
 .modal {
   min-width: 528px;
@@ -610,7 +641,10 @@ ul {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--animation-time);
 }
  .modal-close { 
   display: flex;
